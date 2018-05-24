@@ -15,4 +15,28 @@ public class CategoriesEntity {
 
     @ColumnInfo(name = "image_link")
     private String image_link;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getImage_link() {
+        return image_link;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setImage_link(String image_link) {
+        this.image_link = image_link;
+    }
 }
