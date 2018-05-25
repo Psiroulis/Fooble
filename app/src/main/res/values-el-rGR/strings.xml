@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Fooble</string>
-    <string name="chooseage">Choose Age Group</string>
+    <string name="app_name">Fooble</string>
+    <string name="chooseage">Επέλεξε Ηλικία</string>
     <string-array name="age_group">
         <item>8-10</item>
         <item>11-12</item>

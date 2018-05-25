@@ -18,31 +18,34 @@ public class EntryScreen extends Activity {
 
         final Context context = this;
 
-        final Connectivity connection = new Connectivity();
-
         Handler handler = new Handler();
 
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
 
-                if(connection.isConnected(context)){
-
-                    Intent intent = new Intent(EntryScreen.this,MainActivity.class);
-
-                    startActivity(intent);
-
-                    EntryScreen.this.finish();
-
-                }else{
-
-                    Toast.makeText(context,"There is no internet Connection",Toast.LENGTH_SHORT).show();
-                }
+                CheckConnectionAndProceed(context);
 
             }
         },5000);
 
+    }
 
+    private void CheckConnectionAndProceed(Context context){
+        Connectivity connection = new Connectivity();
 
+        if(connection.isConnected(context)){
+
+            Intent intent = new Intent(EntryScreen.this,MainActivity.class);
+
+            startActivity(intent);
+
+            EntryScreen.this.finish();
+
+        }else{
+
+            //todo: Dialog to procced with no internet Connection
+            Toast.makeText(context,"There is no internet Connection",Toast.LENGTH_SHORT).show();
+        }
     }
 }
