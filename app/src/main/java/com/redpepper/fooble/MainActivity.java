@@ -2,6 +2,7 @@ package com.redpepper.fooble;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -40,7 +41,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        Spinner agebox = findViewById(R.id.ageSpinner);
+        final Spinner agebox = findViewById(R.id.ageSpinner);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.age_group, android.R.layout.simple_spinner_item);
@@ -52,9 +53,36 @@ public class MainActivity extends Activity {
         agebox.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                parent.getItemAtPosition(position).toString();
 
-                Toast.makeText(context,parent.getItemAtPosition(position).toString(),Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context,parent.getItemAtPosition(position).toString(),Toast.LENGTH_SHORT).show();
+
+                String ageGroup = parent.getItemAtPosition(position).toString();
+
+                Intent intent = new Intent(MainActivity.this,AgeInformation.class);
+
+                intent.putExtra("agegroup",ageGroup);
+
+                startActivity(intent);
+
+                MainActivity.this.finish();
+
+
+                switch (ageGroup){
+                    case "8-10":
+                        break;
+                    case "11-12":
+                        break;
+                    case "13-15":
+                        break;
+                    case "16-17":
+                        break;
+                    case "18+":
+                        break;
+                        default:
+                            Toast.makeText(context,"No AgeGroup Selected",Toast.LENGTH_SHORT).show();
+                            break;
+                }
+
             }
 
             @Override
@@ -63,5 +91,4 @@ public class MainActivity extends Activity {
             }
         });
     }
-
 }

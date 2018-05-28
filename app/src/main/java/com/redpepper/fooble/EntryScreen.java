@@ -3,6 +3,7 @@ package com.redpepper.fooble;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
@@ -18,16 +19,33 @@ public class EntryScreen extends Activity {
 
         final Context context = this;
 
-        Handler handler = new Handler();
+        SharedPreferences prefs = context.getSharedPreferences("prefs",Context.MODE_PRIVATE);
 
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
 
-                CheckConnectionAndProceed(context);
+        int firstTime = prefs.getInt("firtstime",0);
 
-            }
-        },5000);
+        if(firstTime != 0){
+
+            Handler handler = new Handler();
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    CheckConnectionAndProceed(context);
+
+                }
+            },5000);
+
+        }else {
+
+            //todo:dialog to inform that connection is required for first time;
+
+        }
+
+
+
+
 
     }
 
@@ -36,7 +54,7 @@ public class EntryScreen extends Activity {
 
         if(connection.isConnected(context)){
 
-            Intent intent = new Intent(EntryScreen.this,MainActivity.class);
+            Intent intent = new Intent(EntryScreen.this,DownloadAllContent.class);
 
             startActivity(intent);
 
