@@ -6,6 +6,7 @@ import android.arch.persistence.room.PrimaryKey;
 
 @Entity
 public class ExercisesEntity {
+
     @PrimaryKey(autoGenerate = true)
     private int id;
 
@@ -29,6 +30,16 @@ public class ExercisesEntity {
 
     @ColumnInfo(name = "bibliography")
     private String bibliography;
+
+    public ExercisesEntity(String name, int age_min, int age_max, String level, int category_id, String description, String bibliography) {
+        this.name = name;
+        this.age_min = age_min;
+        this.age_max = age_max;
+        this.level = level;
+        this.category_id = category_id;
+        this.description = description;
+        this.bibliography = bibliography;
+    }
 
     public int getId() {
         return id;

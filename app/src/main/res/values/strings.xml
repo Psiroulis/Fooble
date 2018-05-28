@@ -2,10 +2,26 @@
     <string name="app_name" translatable="false">Fooble</string>
     <string name="chooseage">Choose Age Group</string>
     <string-array name="age_group">
+        <item>Age</item>
         <item>8-10</item>
         <item>11-12</item>
         <item>13-15</item>
         <item>16-17</item>
         <item>18+</item>
     </string-array>
+    <string name="info_810">
+       No Description in English
+    </string>
+    <string name="info_1112">
+       No Description in English
+    </string>
+    <string name="info_1315">
+       No Description in English
+    </string>
+    <string name="info_1617">
+        No Description in English
+    </string>
+    <string name="info_18plus">
+       No Description in English
+    </string>
 </resources>

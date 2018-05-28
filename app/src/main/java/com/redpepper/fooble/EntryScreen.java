@@ -22,7 +22,9 @@ public class EntryScreen extends Activity {
         SharedPreferences prefs = context.getSharedPreferences("prefs",Context.MODE_PRIVATE);
 
 
-        int firstTime = prefs.getInt("firtstime",0);
+        //int firstTime = prefs.getInt("firtstime",0);
+
+        int firstTime = 1;
 
         if(firstTime != 0){
 
@@ -40,6 +42,7 @@ public class EntryScreen extends Activity {
         }else {
 
             //todo:dialog to inform that connection is required for first time;
+            Toast.makeText(context,"To run App for first time you need internet connection for extra content to be downloaded",Toast.LENGTH_LONG).show();
 
         }
 
@@ -63,6 +66,11 @@ public class EntryScreen extends Activity {
         }else{
 
             //todo: Dialog to procced with no internet Connection
+            Intent intent = new Intent(EntryScreen.this,MainActivity.class);
+
+            startActivity(intent);
+
+            EntryScreen.this.finish();
             Toast.makeText(context,"There is no internet Connection",Toast.LENGTH_SHORT).show();
         }
     }

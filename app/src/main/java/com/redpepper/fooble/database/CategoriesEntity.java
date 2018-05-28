@@ -16,6 +16,11 @@ public class CategoriesEntity {
     @ColumnInfo(name = "image_link")
     private String image_link;
 
+    public CategoriesEntity(String name, String image_link) {
+        this.name = name;
+        this.image_link = image_link;
+    }
+
     public int getId() {
         return id;
     }
