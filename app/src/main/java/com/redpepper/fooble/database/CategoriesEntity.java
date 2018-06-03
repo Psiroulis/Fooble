@@ -8,6 +8,9 @@ import android.arch.persistence.room.PrimaryKey;
 public class CategoriesEntity {
 
     @PrimaryKey(autoGenerate = true)
+    private int uid;
+
+    @ColumnInfo(name="id")
     private int id;
 
     @ColumnInfo(name = "name")
@@ -16,10 +19,17 @@ public class CategoriesEntity {
     @ColumnInfo(name = "image_link")
     private String image_link;
 
-    public CategoriesEntity(String name, String image_link) {
+    public CategoriesEntity(int id,String name, String image_link) {
+        this.id = id;
         this.name = name;
         this.image_link = image_link;
     }
+
+    public void setUid(int uid) {
+        this.uid = uid;
+    }
+
+    public int getUid() { return uid; }
 
     public int getId() {
         return id;

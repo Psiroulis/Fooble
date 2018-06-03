@@ -1,16 +1,27 @@
 package com.redpepper.fooble;
 
 import android.app.Activity;
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.VideoView;
+
+import com.redpepper.fooble.database.AppDatabase;
+import com.redpepper.fooble.database.CategoriesDao;
+import com.redpepper.fooble.database.CategoriesEntity;
+import com.redpepper.fooble.database.ExercisesEntity;
+import com.redpepper.fooble.database.ExerscisesDao;
+
+import java.util.List;
 
 public class MainActivity extends Activity {
 
@@ -111,5 +122,41 @@ public class MainActivity extends Activity {
 
             }
         });
+
+        new GetAllData().execute();
+    }
+
+    private class GetAllData extends AsyncTask<String,String,String>{
+        @Override
+        protected String doInBackground(String... strings) {
+
+            AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"AppDatabase").build();
+
+            CategoriesDao catdao = db.catDao();
+
+            ExerscisesDao exdao = db.excDao();
+
+            List<CategoriesEntity> allCategories = catdao.getAllCategories();
+            List<ExercisesEntity> allExercises = exdao.getAllExercises();
+
+            db.close();
+
+            for (int i = 0; i< allCategories.size(); i++){
+
+                CategoriesEntity entity = allCategories.get(i);
+                Log.d("Blepo","Categorie-> id="+entity.getId()+" name="+entity.getName()+"imlink="+entity.getImage_link());
+            }
+
+            for (int i = 0; i< allExercises.size(); i++){
+
+                ExercisesEntity entity = allExercises.get(i);
+                Log.d("Blepo","Exercise-> id="+entity.getId()+" name="+entity.getName()+"agemin= "+entity.getAge_min());
+            }
+
+
+
+
+            return null;
+        }
     }
 }

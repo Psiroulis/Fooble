@@ -27,62 +27,108 @@ public class HttpConnection {
 
     public HttpConnection(){}
 
-    public JSONObject makeHttpUrlRequest(URL url, HashMap<String,String> params){
+    public JSONObject makeHttpUrlRequest(URL url, HashMap<String,String> params,String requesttype){
 
-        try{
+        if(requesttype.equalsIgnoreCase("Post")){
 
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            try{
 
-            connection.setConnectTimeout(15000);
-            connection.setReadTimeout(10000);
-            connection.setRequestMethod("POST");
-            connection.setDoInput(true);
-            connection.setDoOutput(true);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-            OutputStream outstream = connection.getOutputStream();
+                connection.setConnectTimeout(15000);
+                connection.setReadTimeout(10000);
+                connection.setRequestMethod("POST");
+                connection.setDoInput(true);
+                connection.setDoOutput(true);
 
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outstream, "UTF-8"));
+                OutputStream outstream = connection.getOutputStream();
 
-            writer.write(getquery(params));
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outstream, "UTF-8"));
 
-            writer.flush();
+                writer.write(getquery(params));
 
-            writer.close();
+                writer.flush();
 
-            outstream.close();
+                writer.close();
 
-            connection.connect();
+                outstream.close();
 
-            int status = connection.getResponseCode();
+                connection.connect();
 
-            if(status == 200 || status == 201){
+                int status = connection.getResponseCode();
 
-                BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
+                if(status == 200 || status == 201){
 
-                StringBuilder sb = new StringBuilder();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
 
-                String line;
+                    StringBuilder sb = new StringBuilder();
 
-                while( (line = br.readLine())!= null ){
+                    String line;
 
-                    sb.append(line+"\n");
+                    while( (line = br.readLine())!= null ){
+
+                        sb.append(line+"\n");
+                    }
+
+                    br.close();
+
+                    json = sb.toString();
+
+                }else{
+
+                    Log.d("http connection status", "" + status);
+
                 }
 
-                br.close();
+            }catch (MalformedURLException ex){
 
-                json = sb.toString();
+            }catch (IOException e){
 
-            }else{
-
-                Log.d("http connection status", "" + status);
-
+                Log.d("exception", "IOException"+e.toString());
             }
 
-        }catch (MalformedURLException ex){
 
-        }catch (IOException e){
+        }else if(requesttype.equalsIgnoreCase("Get")){
 
-            Log.d("exception", "IOException"+e.toString());
+            try{
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+                connection.setConnectTimeout(15000);
+                connection.setReadTimeout(10000);
+                connection.setRequestMethod("GET");
+                connection.setDoInput(true);
+
+                connection.connect();
+
+                int status = connection.getResponseCode();
+
+                if(status == 200 || status == 201){
+
+                    BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
+
+                    StringBuilder sb = new StringBuilder();
+
+                    String line;
+
+                    while( (line = br.readLine())!= null ){
+
+                        sb.append(line+"\n");
+                    }
+
+                    br.close();
+
+                    json = sb.toString();
+
+                }else{
+
+                    Log.d("http connection status", "" + status);
+
+                }
+
+            }
+            catch (MalformedURLException ex){ }
+            catch (IOException ex){ Log.d("exception", "IOException"+ex.toString()); }
+
         }
 
         try{
