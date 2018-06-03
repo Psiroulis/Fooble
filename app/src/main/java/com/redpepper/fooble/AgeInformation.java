@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,6 +14,8 @@ public class AgeInformation extends Activity {
    private Context context = this;
 
    private TextView title,infoText;
+
+   private Button goNext;
    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +25,7 @@ public class AgeInformation extends Activity {
 
         Intent intent = getIntent();
 
-        String ageGroup = intent.getStringExtra("agegroup");
+        final String ageGroup = intent.getStringExtra("agegroup");
 
         title.setText(ageGroup);
 
@@ -45,11 +49,23 @@ public class AgeInformation extends Activity {
                 Toast.makeText(context,"No AgeGroup Selected",Toast.LENGTH_SHORT).show();
                 break;
         }
+
+        goNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AgeInformation.this,AllCategoriesList.class);
+
+                intent.putExtra("agegroup",ageGroup);
+
+                startActivity(intent);
+            }
+        });
     }
 
     private void FindTheViews(){
        title = findViewById(R.id.titleAgeInfo);
        infoText = findViewById(R.id.mainTextInfo);
+       goNext = findViewById(R.id.infoNextButton);
 
     }
 

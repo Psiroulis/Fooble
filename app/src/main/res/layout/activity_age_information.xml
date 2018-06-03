@@ -22,5 +22,11 @@
         android:layout_marginTop="20dip"
         android:layout_below="@id/titleAgeInfo"
         android:textAlignment="center"/>
+    <Button
+        android:id="@+id/infoNextButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentBottom="true"
+        android:text="@string/go_next"/>
 
 </RelativeLayout>
