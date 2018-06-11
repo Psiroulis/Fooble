@@ -2,11 +2,14 @@ package com.redpepper.fooble.RecycleViewsAdapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.redpepper.fooble.R;
 import com.redpepper.fooble.database.CategoriesEntity;
 import java.util.List;
@@ -16,8 +19,9 @@ public class CategoryRecViewAdapter extends RecyclerView.Adapter<CategoryRecView
     private List<CategoriesEntity> allCatEntities;
     private Context context;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        public TextView categoryId;
         public TextView categoryName;
         public ImageView categoryBack;
 
@@ -25,9 +29,17 @@ public class CategoryRecViewAdapter extends RecyclerView.Adapter<CategoryRecView
         MyViewHolder(View view) {
             super(view);
 
+            categoryId = view.findViewById(R.id.catitemidtxt);
             categoryName = view.findViewById(R.id.catlistitem_text);
             categoryBack = view.findViewById(R.id.catlistitem_back);
 
+            view.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View view) {
+            Toast.makeText(CategoryRecViewAdapter.this.context,"Id clicked"+categoryId.getText().toString(),Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -54,6 +66,7 @@ public class CategoryRecViewAdapter extends RecyclerView.Adapter<CategoryRecView
 
         CategoriesEntity entity = allCatEntities.get(position);
 
+        holder.categoryId.setText(String.valueOf(entity.getId()));
         holder.categoryName.setText(entity.getName());
         holder.categoryBack.setBackgroundResource(GetTeamDrawable("cat_"+entity.getId()));
     }

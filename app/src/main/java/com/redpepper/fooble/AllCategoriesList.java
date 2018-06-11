@@ -10,6 +10,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MotionEvent;
 
 import com.redpepper.fooble.RecycleViewsAdapters.CategoryRecViewAdapter;
 import com.redpepper.fooble.database.AppDatabase;
@@ -79,6 +80,7 @@ public class AllCategoriesList extends Activity {
             categoryList.setAdapter(mAdapter);
 
             mAdapter.notifyDataSetChanged();
+
         }
 
         @Override
