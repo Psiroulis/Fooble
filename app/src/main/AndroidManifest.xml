@@ -22,7 +22,8 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".DownloadAllContent" />
         <activity android:name=".AgeInformation" />
-        <activity android:name=".AllCategoriesList"></activity>
+        <activity android:name=".AllCategoriesList" />
+        <activity android:name=".ExercicesList"></activity>
     </application>
 
 </manifest>
