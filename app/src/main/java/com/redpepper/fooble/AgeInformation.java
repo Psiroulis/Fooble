@@ -10,13 +10,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class AgeInformation extends Activity {
+    private TextView title,infoText;
 
-   private Context context = this;
+    private Button goNext;
 
-   private TextView title,infoText;
+    private int selectedAge;
 
-   private Button goNext;
-   @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_age_information);
@@ -25,29 +25,38 @@ public class AgeInformation extends Activity {
 
         Intent intent = getIntent();
 
-        final String ageGroup = intent.getStringExtra("agegroup");
+        selectedAge = intent.getIntExtra("selectedAge",0);
 
-        title.setText(ageGroup);
 
-        switch (ageGroup){
-            case "8-10":
-                infoText.setText(R.string.info_810);
-                break;
-            case "11-12":
-                infoText.setText(R.string.info_1112);
-                break;
-            case "13-15":
-                infoText.setText(R.string.info_1315);
-                break;
-            case "16-17":
-                infoText.setText(R.string.info_1617);
-                break;
-            case "18+":
-                infoText.setText(R.string.info_18plus);
-                break;
-            default:
-                Toast.makeText(context,"No AgeGroup Selected",Toast.LENGTH_SHORT).show();
-                break;
+        if(selectedAge>= 8 && selectedAge <= 10){
+
+            infoText.setText(R.string.info_810);
+
+            title.setText("8-10");
+
+        }else if(selectedAge>= 11 && selectedAge <= 12){
+
+            infoText.setText(R.string.info_1112);
+
+            title.setText("11-12");
+
+        }else if(selectedAge>= 13 && selectedAge <= 15){
+
+            infoText.setText(R.string.info_1315);
+
+            title.setText("13-15");
+
+        }else if(selectedAge>= 16 && selectedAge <= 17){
+
+            infoText.setText(R.string.info_1617);
+
+            title.setText("16-17");
+
+        }else if(selectedAge > 0 && selectedAge >= 18){
+
+            infoText.setText(R.string.info_18plus);
+
+            title.setText("18 +");
         }
 
         goNext.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +64,7 @@ public class AgeInformation extends Activity {
             public void onClick(View view) {
                 Intent intent = new Intent(AgeInformation.this,AllCategoriesList.class);
 
-                intent.putExtra("agegroup",ageGroup);
+                intent.putExtra("selectedAge",selectedAge);
 
                 startActivity(intent);
             }
@@ -72,8 +81,5 @@ public class AgeInformation extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-
-
-
-    }
+   }
 }

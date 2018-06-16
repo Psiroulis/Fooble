@@ -11,32 +11,14 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentLeft="true"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/selectagebutton"
+        android:layout_width="200dip"
+        android:layout_height="50dip"
+        android:background="#fff"
+        android:text="Select Age"
         android:layout_centerVertical="true"
-        android:orientation="vertical"
-        android:layout_centerHorizontal="true"
-        android:padding="50dip"
-        android:background="#b5000000"
-        >
-
-        <TextView
-            android:id="@+id/simpleText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/chooseage"
-            android:textAlignment="center"
-            android:textColor="#cecece"/>
-
-        <Spinner
-            android:id="@+id/ageSpinner"
-            android:layout_width="130dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="20dip"
-            android:background="@drawable/spinerback"/>
-
-    </LinearLayout>
+        android:layout_centerHorizontal="true"/>
 
 
 

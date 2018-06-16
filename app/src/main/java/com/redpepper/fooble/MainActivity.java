@@ -1,107 +1,37 @@
 package com.redpepper.fooble;
 
 import android.app.Activity;
-import android.arch.persistence.room.Room;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.VideoView;
-
-import com.redpepper.fooble.database.AppDatabase;
-import com.redpepper.fooble.database.CategoriesDao;
-import com.redpepper.fooble.database.CategoriesEntity;
-import com.redpepper.fooble.database.ExercisesEntity;
-import com.redpepper.fooble.database.ExerscisesDao;
-
-import java.util.List;
+import java.util.Calendar;
 
 public class MainActivity extends Activity {
 
     private VideoView mVideoView;
 
-    boolean userSelect = false;
+    private Button selectAgeButton;
 
+    private static Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         mVideoView = findViewById(R.id.videoView);
+        selectAgeButton = findViewById(R.id.selectagebutton);
 
-        final Spinner agebox = findViewById(R.id.ageSpinner);
-
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.age_group, android.R.layout.simple_spinner_item);
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        agebox.setAdapter(adapter);
-
-        agebox.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-
-                switch (motionEvent.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-
-                        userSelect = true;
-
-                        break;
-                    case MotionEvent.ACTION_UP:
-
-                        view.performClick();
-
-                        break;
-                    default:
-                        break;
-                }
-
-                return true;
-            }
-
-
-        });
-
-
-
-
-        agebox.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                if(userSelect){
-
-                    //Toast.makeText(context,parent.getItemAtPosition(position).toString(),Toast.LENGTH_SHORT).show();
-
-                    if(position != 0) {
-
-                        String ageGroup = parent.getItemAtPosition(position).toString();
-
-                        Intent intent = new Intent(MainActivity.this, AgeInformation.class);
-
-                        intent.putExtra("agegroup", ageGroup);
-
-                        startActivity(intent);
-
-                        userSelect = false;
-                    }
-                }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
+        context = this;
     }
 
     @Override
@@ -123,10 +53,68 @@ public class MainActivity extends Activity {
             }
         });
 
-        new GetAllData().execute();
+        selectAgeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                DialogFragment newFragment = new DatePickerFragment();
+                newFragment.show(getFragmentManager(),"datePicker");
+
+            }
+        });
+
     }
 
-    private class GetAllData extends AsyncTask<String,String,String>{
+    public static class DatePickerFragment extends DialogFragment
+            implements DatePickerDialog.OnDateSetListener {
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            return new DatePickerDialog(getActivity(), this, year, month, day);
+        }
+
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+
+            //Log.d("blepo","age is: "+getAge(year,month,day) );
+
+            Intent intent = new Intent(context,AgeInformation.class);
+
+            intent.putExtra("selectedAge",getAge(year,month,day));
+
+            startActivity(intent);
+
+        }
+
+        public int getAge(int DOByear, int DOBmonth, int DOBday) {
+
+            int age;
+
+            final Calendar calenderToday = Calendar.getInstance();
+            int currentYear = calenderToday.get(Calendar.YEAR);
+            int currentMonth = 1 + calenderToday.get(Calendar.MONTH);
+            int todayDay = calenderToday.get(Calendar.DAY_OF_MONTH);
+
+            age = currentYear - DOByear;
+
+            if(DOBmonth > currentMonth) {
+                --age;
+            } else if(DOBmonth == currentMonth) {
+                if(DOBday > todayDay){
+                    --age;
+                }
+            }
+            return age;
+        }
+    }
+}
+
+/*private class GetAllData extends AsyncTask<String,String,String>{
         @Override
         protected String doInBackground(String... strings) {
 
@@ -158,5 +146,4 @@ public class MainActivity extends Activity {
 
             return null;
         }
-    }
-}
+    }*/

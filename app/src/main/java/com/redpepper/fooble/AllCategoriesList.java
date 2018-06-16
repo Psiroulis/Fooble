@@ -23,7 +23,7 @@ import java.util.List;
 
 public class AllCategoriesList extends Activity {
 
-    private String agegroup;
+    private int selectedAge;
 
     private RecyclerView categoryList;
 
@@ -48,7 +48,7 @@ public class AllCategoriesList extends Activity {
     protected void onResume() {
         super.onResume();
 
-        agegroup = getIntent().getStringExtra("agegroup");
+        selectedAge = getIntent().getIntExtra("selectedAge",0);
 
         new GetAllCategories().execute();
 
