@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Fooble</string>
-    <string name="chooseage">Επέλεξε Ηλικία</string>
+    <string name="chooseage">Δώσε Ημερ/νία Γέννησης</string>
     <string-array name="age_group">
         <item>Ηλικία</item>
         <item>8-10</item>
@@ -10,7 +10,10 @@
         <item>16-17</item>
         <item>18+</item>
     </string-array>
-    
+    <string name="info_pre8">
+       Η ηλικία σου δεν Καλύπτεται από την εφαρμογή.Καλύτερα ζήτα τη γνώμη ενός ειδικού στην
+        ποσδοσφαρική εξάσκηση.
+    </string>
     <string name="info_810">
         Το ηλικιακό γκρουπ των 8-10 ετών αποτελεί την χρυσή ηλικία για την
         εκμάθηση κινητικών μοτίβων και βελτίωση της συναρπαστικής ικανότητας . Η εκμάθηση βασικών

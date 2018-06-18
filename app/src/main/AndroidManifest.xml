@@ -12,18 +12,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EntryScreen">
+        <activity
+            android:name=".EntryScreen"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".DownloadAllContent" />
-        <activity android:name=".AgeInformation" />
-        <activity android:name=".AllCategoriesList" />
-        <activity android:name=".ExercicesList"></activity>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation"/>
+        <activity android:name=".DownloadAllContent"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation"/>
+        <activity android:name=".AgeInformation"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation"/>
+        <activity android:name=".AllCategoriesList"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation"/>
+        <activity android:name=".ExercicesList"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation"/>
     </application>
 
 </manifest>

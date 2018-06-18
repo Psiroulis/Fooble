@@ -17,17 +17,18 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="20dp"
-        android:src="@drawable/logo1"/>
+        android:src="@drawable/logowithstars"/>
 
     <Button
         android:id="@+id/selectagebutton"
-        android:layout_width="200dip"
-        android:layout_height="50dip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/bluebuttonselector"
-        android:text="Import Bithday"
+        android:text="@string/chooseage"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:textColor="#fff"/>
+        android:textColor="#fff"
+        android:padding="15dp"/>
 
 
 

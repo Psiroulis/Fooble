@@ -27,7 +27,6 @@ public class AgeInformation extends Activity {
 
         selectedAge = intent.getIntExtra("selectedAge",0);
 
-
         if(selectedAge>= 8 && selectedAge <= 10){
 
             infoText.setText(R.string.info_810);
@@ -57,6 +56,10 @@ public class AgeInformation extends Activity {
             infoText.setText(R.string.info_18plus);
 
             title.setText("18 +");
+        }else{
+
+            infoText.setText(R.string.info_pre8);
+            title.setText("-");
         }
 
         goNext.setOnClickListener(new View.OnClickListener() {
