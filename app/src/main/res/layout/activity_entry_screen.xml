@@ -3,14 +3,14 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#e4e4e4">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:layout_width="280dip"
+        android:layout_height="280dip"
+        android:src="@drawable/logo1"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Fooble"
-        android:textSize="60sp"
-        android:textColor="#3d51ff"/>
+        android:layout_centerVertical="true"/>
+
 </RelativeLayout>

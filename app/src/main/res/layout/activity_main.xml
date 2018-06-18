@@ -11,14 +11,23 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentLeft="true"/>
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/logo1"/>
+
     <Button
         android:id="@+id/selectagebutton"
         android:layout_width="200dip"
         android:layout_height="50dip"
-        android:background="#fff"
-        android:text="Select Age"
+        android:background="@drawable/bluebuttonselector"
+        android:text="Import Bithday"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textColor="#fff"/>
 
 
 
