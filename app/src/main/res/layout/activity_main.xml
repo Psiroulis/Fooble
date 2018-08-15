@@ -11,13 +11,20 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentLeft="true"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0A1128"
+        android:alpha="0.9">
+
+    </LinearLayout>
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="20dp"
-        android:src="@drawable/logowithstars"/>
+        android:src="@drawable/newlogov2"/>
 
     <Button
         android:id="@+id/selectagebutton"

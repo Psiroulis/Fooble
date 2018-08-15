@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -81,7 +82,13 @@ public class MainActivity extends Activity {
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
 
-            //Log.d("blepo","age is: "+getAge(year,month,day) );
+            SharedPreferences prefs = context.getSharedPreferences("prefs",Context.MODE_PRIVATE);
+
+            SharedPreferences.Editor pe= prefs.edit();
+
+            pe.putInt("age",getAge(year,month,day));
+
+            pe.commit();
 
             Intent intent = new Intent(context,AgeInformation.class);
 

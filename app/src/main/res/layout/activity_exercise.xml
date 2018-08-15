@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ExerciseActivity">
+
+    <RelativeLayout
+        android:id="@+id/titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:background="#D2323D">
+        <TextView
+            android:id="@+id/exerciceTitleTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ΣΑΝΙΔΑ"
+            android:textSize="23sp"
+            android:textAlignment="center"
+            android:layout_centerVertical="true"
+            android:textColor="#FFF"/>
+    </RelativeLayout>
+
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/view"
+        android:layout_below="@id/titleLayout"
+        android:layout_above="@id/splitter"/>
+
+    <LinearLayout
+        android:id="@+id/splitter"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:visibility="invisible"/>
+
+    <RelativeLayout
+        android:id="@+id/descriptionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#26459E"
+        android:layout_below="@id/splitter">
+        <TextView
+            android:id="@+id/descrTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Περιγραφή"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="#FFD700"/>
+        <TextView
+            android:id="@+id/descrText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum lorem ut mauris pretium, eu posuere ante vestibulum. Praesent vehicula, nunc feugiat ullamcorper eleifend, ipsum libero sollicitudin purus, in lobortis dolor magna sed metus. Sed lorem metus, fermentum a fermentum ac, congue tincidunt eros. "
+            android:textSize="18sp"
+            android:gravity="fill"
+            android:textAlignment="gravity"
+            android:layout_below="@id/descrTitle"
+            android:textColor="#FFF"
+            android:layout_margin="10dp"/>
+    </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>

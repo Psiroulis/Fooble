@@ -116,10 +116,10 @@ public class DownloadAllContent extends Activity {
                     String description = oneexercise.getString("description");
                     String bibliography = oneexercise.getString("bibliography");
 
-                    //Log.d("blepo","Exercise id = "+id+"name="+name+"agemin="+agemin+"agemax="+agemax+"level="+level);
+//                  Log.d("blepo","Exercise id = "+id+"name="+name+"agemin="+agemin+"agemax="+agemax+"level="+level);
 
-                    ExercisesEntity exentity = new ExercisesEntity(id,name,agemin,agemax,level,category_id,description,bibliography);
-                    exdao.insertExercices(exentity);
+//                  ExercisesEntity exentity = new ExercisesEntity(id,name,agemin,agemax,level,category_id,description,bibliography);
+//                  exdao.insertExercices(exentity);
 
                }
 

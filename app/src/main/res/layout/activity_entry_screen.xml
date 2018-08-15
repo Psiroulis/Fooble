@@ -4,13 +4,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:background="#0A1128">
 
     <ImageView
-        android:layout_width="280dip"
-        android:layout_height="280dip"
-        android:src="@drawable/logowithstars"
+        android:layout_width="220dip"
+        android:layout_height="220dip"
+        android:src="@drawable/newlogov2"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"/>
+    <ImageView
+        android:id="@+id/loaderImgv"
+        android:layout_width="30dip"
+        android:layout_height="50dip"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"/>
 
 </RelativeLayout>
