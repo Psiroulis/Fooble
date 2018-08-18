@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Fooble</string>
-    <string name="chooseage">Δώσε Ημερ/νία Γέννησης</string>
+    <string name="chooseage">ΔΩΣΕ ΗΜΕΡ/ΝΙΑ ΓΕΝΝΗΣΗΣ</string>
     <string-array name="age_group">
         <item>Ηλικία</item>
         <item>8-10</item>

@@ -31,7 +31,7 @@ public class AllCategoriesList extends Activity {
 
     private Context context;
 
-    private List<CategoriesEntity> allCategories;
+    private List<Category> allCategories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +48,7 @@ public class AllCategoriesList extends Activity {
     protected void onResume() {
         super.onResume();
 
-        selectedAge = getIntent().getIntExtra("selectedAge",0);
-
-        new GetAllCategories().execute();
+        //selectedAge = getIntent().getIntExtra("selectedAge",0);
 
     }
 
@@ -86,13 +84,11 @@ public class AllCategoriesList extends Activity {
         @Override
         protected String doInBackground(String... strings) {
 
-            AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"AppDatabase").build();
+            Category categoryOne = new Category(1,"ΚΑΤΗΓΟΡΙΑ ΕΝΑ","ΜΙΚΡΗ ΠΕΡΙΓΡΑΦΗ","");
+            Category categoryTwo = new Category(2,"ΚΑΤΗΓΟΡΙΑ ΔΥΟ","ΜΙΚΡΗ ΠΕΡΙΓΡΑΦΗ 2","");
 
-            CategoriesDao catdao = db.catDao();
-
-            allCategories = catdao.getAllCategories();
-
-            db.close();
+            allCategories.add(categoryOne);
+            allCategories.add(categoryTwo);
 
             return null;
         }

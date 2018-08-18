@@ -1,6 +1,7 @@
 package com.redpepper.fooble.RecycleViewsAdapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,41 +10,50 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.redpepper.fooble.Category;
+import com.redpepper.fooble.ExerciseActivity;
 import com.redpepper.fooble.R;
 import com.redpepper.fooble.database.CategoriesEntity;
 import java.util.List;
 
 public class CategoryRecViewAdapter extends RecyclerView.Adapter<CategoryRecViewAdapter.MyViewHolder> {
 
-    private List<CategoriesEntity> allCatEntities;
+    private List<Category> allCatEntities;
     private Context context;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+   // public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+    public class MyViewHolder extends RecyclerView.ViewHolder{
 
         public TextView categoryId;
-        public TextView categoryName;
+        public TextView categoryTitle;
         public ImageView categoryBack;
+        public TextView categoryShortDescr;
+        public ImageView openCategoryButton;
+
 
 
         MyViewHolder(View view) {
             super(view);
 
             categoryId = view.findViewById(R.id.catitemidtxt);
-            categoryName = view.findViewById(R.id.catlistitem_text);
+            categoryTitle = view.findViewById(R.id.catListItemTitle);
+            categoryShortDescr = view.findViewById(R.id.catListItemShortDescr);
             categoryBack = view.findViewById(R.id.catlistitem_back);
+            openCategoryButton = view.findViewById(R.id.catListItemButton);
 
-            view.setOnClickListener(this);
+//            view.setOnClickListener(this);
 
         }
 
-        @Override
-        public void onClick(View view) {
-            Toast.makeText(CategoryRecViewAdapter.this.context,"Id clicked"+categoryId.getText().toString(),Toast.LENGTH_SHORT).show();
-        }
+//        @Override
+//        public void onClick(View view) {
+//            Toast.makeText(CategoryRecViewAdapter.this.context,"Id clicked"+categoryId.getText().toString(),Toast.LENGTH_SHORT).show();
+//        }
     }
 
-    public CategoryRecViewAdapter(Context context,List<CategoriesEntity> allCatEntities) {
-        this.allCatEntities = allCatEntities;
+    public CategoryRecViewAdapter(Context context,List<Category> allCategories) {
+        this.allCatEntities = allCategories;
         this.context = context;
     }
 
@@ -63,11 +73,23 @@ public class CategoryRecViewAdapter extends RecyclerView.Adapter<CategoryRecView
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        CategoriesEntity entity = allCatEntities.get(position);
+        final Category category = allCatEntities.get(position);
 
-        holder.categoryId.setText(String.valueOf(entity.getId()));
-        holder.categoryName.setText(entity.getName());
-        holder.categoryBack.setBackgroundResource(GetTeamDrawable("cat_"+entity.getId()));
+        holder.categoryId.setText(String.valueOf(category.getId()));
+        holder.categoryTitle.setText(String.valueOf(category.getTitle()));
+        holder.categoryShortDescr.setText(String.valueOf(category.getShortDescription()));
+        holder.openCategoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(context, ExerciseActivity.class);
+
+                intent.putExtra("catid",category.getId());
+
+            }
+        });
+
+        holder.categoryBack.setBackgroundResource(GetTeamDrawable("cat_"+category.getId()));
     }
 
     private Integer GetTeamDrawable(String teamName){

@@ -68,7 +68,7 @@ public class AgeInformation extends Activity {
         goNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AgeInformation.this,ExerciseActivity.class);
+                Intent intent = new Intent(AgeInformation.this,AllCategoriesList.class);
 
                 intent.putExtra("selectedAge",selectedAge);
 
