@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +30,7 @@ public class CategoryRecViewAdapter extends RecyclerView.Adapter<CategoryRecView
         public TextView categoryTitle;
         public ImageView categoryBack;
         public TextView categoryShortDescr;
-        public ImageView openCategoryButton;
+        public Button openCategoryButton;
 
 
 
@@ -37,7 +38,7 @@ public class CategoryRecViewAdapter extends RecyclerView.Adapter<CategoryRecView
             super(view);
 
             categoryId = view.findViewById(R.id.catitemidtxt);
-            categoryTitle = view.findViewById(R.id.catListItemTitle);
+            categoryTitle = view.findViewById(R.id.litCategoryTitleTxt);
             categoryShortDescr = view.findViewById(R.id.catListItemShortDescr);
             categoryBack = view.findViewById(R.id.catlistitem_back);
             openCategoryButton = view.findViewById(R.id.catListItemButton);

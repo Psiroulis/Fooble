@@ -6,9 +6,11 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.BatteryManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,6 +35,8 @@ public class MainActivity extends Activity {
         selectAgeButton = findViewById(R.id.selectagebutton);
 
         context = this;
+
+
     }
 
     @Override
@@ -120,6 +124,7 @@ public class MainActivity extends Activity {
         }
     }
 }
+
 
 /*private class GetAllData extends AsyncTask<String,String,String>{
         @Override

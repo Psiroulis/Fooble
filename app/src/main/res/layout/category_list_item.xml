@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp">
 
     <TextView
         android:id="@+id/catitemidtxt"
@@ -11,16 +13,22 @@
         android:visibility="gone"/>
 
     <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
+        android:layout_height="250dip"
+        card_view:cardCornerRadius="4dp"
+        card_view:cardBackgroundColor="#fff"
+        card_view:contentPadding="5dp">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="300dip"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
+
             <RelativeLayout
-                android:id="@+id/upRelativeLay"
+                android:id="@+id/litimagelaout"
                 android:layout_width="match_parent"
-                android:layout_height="150dip">
+                android:layout_height="90dp">
 
                 <ImageView
                     android:id="@+id/catlistitem_back"
@@ -28,81 +36,82 @@
                     android:layout_height="match_parent"
                     android:src="@drawable/cat_2"
                     android:scaleType="centerCrop"/>
-
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#000"
                     android:alpha="0.8">
-                </LinearLayout>
+                </RelativeLayout>
 
                 <TextView
-                    android:id="@+id/catListItemTitle"
+                    android:id="@+id/litCategoryTitleTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#fff"
-                    android:text="TAXYTHTA"
-                    android:textSize="25sp"
-                    android:layout_alignParentLeft="true"
+                    android:text="Category Title"
                     android:layout_alignParentBottom="true"
-                    android:layout_margin="10dp"/>
+                    android:layout_alignParentLeft="true"
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"/>
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/downRelativeLay"
+                android:id="@+id/liDescriptionTextLayout"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginTop="10dp">
+                android:layout_height="match_parent"
+                android:layout_below="@id/litimagelaout"
+                android:layout_above="@id/litActionButtLayout">
 
                 <TextView
                     android:id="@+id/catListItemShortDescr"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer a semper risus. Sed luctus dictum diam et egestas."
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textAlignment="center"
+                    android:textSize="15sp"
                     android:textColor="#222"
-                    android:justificationMode="inter_word"
-                    android:textSize="17sp"
-                    android:layout_alignParentTop="true"
-                    android:layout_above="@id/catListItemButton"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"/>
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer a semper risus. Sed luctus dictum diam et egestas."/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/litActionButtLayout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:background="#eee">
 
                 <Button
                     android:id="@+id/catListItemButton"
-                    android:layout_width="match_parent"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/category_next"
+                    android:layout_centerVertical="true"
+                    />
+
+                <ImageView
+                    android:id="@+id/litListImageview"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/list_icon"/>
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ΑΝΟΙΓΜΑ"
-                    android:layout_alignParentBottom="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/litListImageview"
+                    android:text="30"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:background="@drawable/blue_button_back"
-                    android:textColor="#fff"
-                    android:layout_marginBottom="10dp"/>
+                    android:textSize="20sp"
+                    android:textColor="#222"/>
             </RelativeLayout>
 
-        </LinearLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        </RelativeLayout>
 
 
     </android.support.v7.widget.CardView>
 
-</RelativeLayout>
+</LinearLayout>
