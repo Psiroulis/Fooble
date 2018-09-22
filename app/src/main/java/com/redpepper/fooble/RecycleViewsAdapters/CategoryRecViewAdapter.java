@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.redpepper.fooble.Category;
+import com.redpepper.fooble.ExercicesList;
 import com.redpepper.fooble.ExerciseActivity;
 import com.redpepper.fooble.R;
 import com.redpepper.fooble.database.CategoriesEntity;
@@ -83,9 +84,11 @@ public class CategoryRecViewAdapter extends RecyclerView.Adapter<CategoryRecView
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(context, ExerciseActivity.class);
+                Intent intent = new Intent(context, ExercicesList.class);
 
                 intent.putExtra("catid",category.getId());
+
+                context.startActivity(intent);
 
             }
         });

@@ -48,9 +48,9 @@ public class AllCategoriesList extends Activity {
 
         context = this;
 
-        new GetAllCategories().execute();
-
         allCategories = new ArrayList<Category>();
+
+        new GetAllCategories().execute();
     }
 
     private void findTheViews(){
@@ -77,6 +77,7 @@ public class AllCategoriesList extends Activity {
             categoryList.setItemAnimator(new DefaultItemAnimator());
             categoryList.addItemDecoration(new DividerItemDecoration(context, LinearLayoutManager.VERTICAL));
             categoryList.setAdapter(mAdapter);
+            categoryList.setNestedScrollingEnabled(false);
 
             mAdapter.notifyDataSetChanged();
 

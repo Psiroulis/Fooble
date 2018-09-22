@@ -1,5 +1,6 @@
 package com.redpepper.fooble;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 
@@ -14,10 +15,21 @@ public class ExerciseActivity extends YouTubeBaseActivity {
 
     YouTubePlayer.OnInitializedListener yListener;
 
+    private int exerciseId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_exercise);
+
+        Intent intent = getIntent();
+
+        exerciseId = intent.getIntExtra("exerciseId",0);
+
+
+
 
         yView = findViewById(R.id.view);
 

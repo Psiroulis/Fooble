@@ -1,7 +1,7 @@
 package com.redpepper.fooble;
 
 import android.app.Activity;
-import android.arch.persistence.room.Room;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -11,41 +11,46 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.redpepper.fooble.RecycleViewsAdapters.CategoryRecViewAdapter;
 import com.redpepper.fooble.RecycleViewsAdapters.ExercicesRecViewAdater;
-import com.redpepper.fooble.database.AppDatabase;
-import com.redpepper.fooble.database.CategoriesDao;
-import com.redpepper.fooble.database.ExercisesEntity;
-import com.redpepper.fooble.database.ExerscisesDao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExercicesList extends Activity {
 
     private RecyclerView exercisesList;
-    private Context context;
-    private int selectedCategoryId;
-    private int selectedAge;
-    private List<ExercisesEntity> allCategorysExercises;
+
     private ExercicesRecViewAdater mAdapter;
+
+    private Context context;
+
+    private List<Exercise> allCategorysExercises;
+
+    private int categoryId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_exercices_list);
-
-        Intent intent = getIntent();
-
-        selectedCategoryId = intent.getIntExtra("categoryId",0);
 
         findTheViews();
 
         context = this;
 
+        Intent intent = getIntent();
+
+        categoryId = intent.getIntExtra("catid",0);
+
+        allCategorysExercises = new ArrayList<>();
+
+        new GetCategorysExercises().execute();
+
     }
 
     private void findTheViews(){
-        exercisesList = findViewById(R.id.exerc_recycleview);
+        exercisesList = findViewById(R.id.exec_recycleview);
     }
 
     private class GetCategorysExercises extends AsyncTask<String,String,String>{
@@ -58,14 +63,13 @@ public class ExercicesList extends Activity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
 
-            //exercisesList.setHasFixedSize(true);
-
-            mAdapter = new ExercicesRecViewAdater(context,allCategorysExercises);
+            mAdapter = new ExercicesRecViewAdater(allCategorysExercises,context);
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
             exercisesList.setLayoutManager(mLayoutManager);
             exercisesList.setItemAnimator(new DefaultItemAnimator());
             exercisesList.addItemDecoration(new DividerItemDecoration(context, LinearLayoutManager.VERTICAL));
             exercisesList.setAdapter(mAdapter);
+            exercisesList.setNestedScrollingEnabled(false);
 
             mAdapter.notifyDataSetChanged();
         }
@@ -73,13 +77,17 @@ public class ExercicesList extends Activity {
         @Override
         protected String doInBackground(String... strings) {
 
-            AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"AppDatabase").build();
+            //get Exercises from api with catId
 
-            ExerscisesDao excdao = db.excDao();
+            Exercise exercise_one = new Exercise(1,"Ασκιση 1",1);
+            Exercise exercise_two = new Exercise(2,"Ασκιση 2",2);
+            Exercise exercise_three = new Exercise(3,"Ασκιση 3",3);
 
-            allCategorysExercises = excdao.getExercicesOfCategoryAndAge(selectedCategoryId,selectedAge);
+            allCategorysExercises.add(exercise_one);
+            allCategorysExercises.add(exercise_two);
+            allCategorysExercises.add(exercise_three);
 
-            db.close();
+
 
             return null;
         }
