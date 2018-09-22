@@ -28,9 +28,6 @@ public class ExerciseActivity extends YouTubeBaseActivity {
 
         exerciseId = intent.getIntExtra("exerciseId",0);
 
-
-
-
         yView = findViewById(R.id.view);
 
         yListener = new YouTubePlayer.OnInitializedListener() {

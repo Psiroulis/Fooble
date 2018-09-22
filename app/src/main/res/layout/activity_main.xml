@@ -30,7 +30,7 @@
         android:id="@+id/selectagebutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/bluebuttonselector"
+        android:background="@drawable/redbuttonselector"
         android:text="@string/chooseage"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
