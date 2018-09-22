@@ -28,6 +28,8 @@ public class ExercicesList extends Activity {
 
     private int categoryId;
 
+    private List<Integer> allDoneExercises;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -44,6 +46,13 @@ public class ExercicesList extends Activity {
         categoryId = intent.getIntExtra("catid",0);
 
         allCategorysExercises = new ArrayList<>();
+
+        allDoneExercises = new ArrayList<>();
+
+        allDoneExercises.add(1);
+        allDoneExercises.add(3);
+        allDoneExercises.add(4);
+        allDoneExercises.add(5);
 
         new GetCategorysExercises().execute();
 
@@ -63,7 +72,7 @@ public class ExercicesList extends Activity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
 
-            mAdapter = new ExercicesRecViewAdater(allCategorysExercises,context);
+            mAdapter = new ExercicesRecViewAdater(allCategorysExercises,allDoneExercises,context);
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
             exercisesList.setLayoutManager(mLayoutManager);
             exercisesList.setItemAnimator(new DefaultItemAnimator());
@@ -77,7 +86,7 @@ public class ExercicesList extends Activity {
         @Override
         protected String doInBackground(String... strings) {
 
-            //get Exercises from api with catId
+            //todo: get Exercises from api with catId
 
             Exercise exercise_one = new Exercise(1,"Ασκιση 1",1);
             Exercise exercise_two = new Exercise(2,"Ασκιση 2",2);

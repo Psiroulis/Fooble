@@ -34,14 +34,9 @@ public class EntryScreen extends Activity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-
                     CheckConnectionAndProceed(context);
-
-                }
-            },7000);
-
-
-
+                    }
+                },7000);
     }
 
     private void CheckConnectionAndProceed(Context context){

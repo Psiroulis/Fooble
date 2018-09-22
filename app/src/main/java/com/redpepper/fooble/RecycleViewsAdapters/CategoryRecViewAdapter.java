@@ -9,21 +9,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.redpepper.fooble.Category;
 import com.redpepper.fooble.ExercicesList;
-import com.redpepper.fooble.ExerciseActivity;
 import com.redpepper.fooble.R;
-import com.redpepper.fooble.database.CategoriesEntity;
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class CategoryRecViewAdapter extends RecyclerView.Adapter<CategoryRecViewAdapter.MyViewHolder> {
 
     private List<Category> allCatEntities;
     private Context context;
-
-   // public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
@@ -32,6 +29,7 @@ public class CategoryRecViewAdapter extends RecyclerView.Adapter<CategoryRecView
         public ImageView categoryBack;
         public TextView categoryShortDescr;
         public Button openCategoryButton;
+        public TextView categoryCounter;
 
 
 
@@ -43,15 +41,10 @@ public class CategoryRecViewAdapter extends RecyclerView.Adapter<CategoryRecView
             categoryShortDescr = view.findViewById(R.id.catListItemShortDescr);
             categoryBack = view.findViewById(R.id.catlistitem_back);
             openCategoryButton = view.findViewById(R.id.catListItemButton);
-
-//            view.setOnClickListener(this);
+            categoryCounter = view.findViewById(R.id.catItemCounter);
 
         }
 
-//        @Override
-//        public void onClick(View view) {
-//            Toast.makeText(CategoryRecViewAdapter.this.context,"Id clicked"+categoryId.getText().toString(),Toast.LENGTH_SHORT).show();
-//        }
     }
 
     public CategoryRecViewAdapter(Context context,List<Category> allCategories) {
@@ -93,22 +86,25 @@ public class CategoryRecViewAdapter extends RecyclerView.Adapter<CategoryRecView
             }
         });
 
-        holder.categoryBack.setBackgroundResource(GetTeamDrawable("cat_"+category.getId()));
-    }
+        holder.categoryCounter.setText(String.valueOf(category.getCounter()));
 
-    private Integer GetTeamDrawable(String teamName){
-
-        String name = teamName;
-
-        if(name.contains(" ")){
-
-            name = name.replace(" ","_");
-
-        }
-
-        return context.getResources().getIdentifier( name.toLowerCase() , "drawable", context.getPackageName());
+        Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(holder.categoryBack);
 
     }
+
+//    private Integer GetTeamDrawable(String teamName){
+//
+//        String name = teamName;
+//
+//        if(name.contains(" ")){
+//
+//            name = name.replace(" ","_");
+//
+//        }
+//
+//        return context.getResources().getIdentifier( name.toLowerCase() , "drawable", context.getPackageName());
+//
+//    }
 }
 
 

@@ -5,22 +5,14 @@ public class Category {
     private int id;
     private String title;
     private String shortDescription;
-    private String longDescription;
     private String imageLink;
+    private String counter;
 
-    public Category(int id, String title, String shortDescription, String imageLink) {
+    public Category(int id, String title, String shortDescription,String counter, String imageLink) {
         this.id = id;
         this.title = title;
         this.shortDescription = shortDescription;
-        this.imageLink = imageLink;
-        this.longDescription = null;
-    }
-
-    public Category(int id, String title, String shortDescription, String longDescription, String imageLink) {
-        this.id = id;
-        this.title = title;
-        this.shortDescription = shortDescription;
-        this.longDescription = longDescription;
+        this.counter = counter;
         this.imageLink = imageLink;
     }
 
@@ -48,12 +40,12 @@ public class Category {
         this.shortDescription = shortDescription;
     }
 
-    public String getLongDescription() {
-        return longDescription;
+    public String getCounter() {
+        return counter;
     }
 
-    public void setLongDescription(String longDescription) {
-        this.longDescription = longDescription;
+    public void setCounter(String counter) {
+        this.counter = counter;
     }
 
     public String getImageLink() {

@@ -18,7 +18,4 @@ public interface ExerscisesDao {
 
     @Query("DELETE FROM ExercisesEntity")
     void dropTableExercises();
-
-    @Query("SELECT * FROM ExercisesEntity WHERE category_id = :categoryId AND age_min >= :age AND :age <= age_max")
-    List<ExercisesEntity> getExercicesOfCategoryAndAge(int categoryId,int age);
 }

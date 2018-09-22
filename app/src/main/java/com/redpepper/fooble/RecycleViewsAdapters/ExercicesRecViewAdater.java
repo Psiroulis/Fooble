@@ -23,6 +23,7 @@ import java.util.List;
 public class ExercicesRecViewAdater extends RecyclerView.Adapter<ExercicesRecViewAdater.MyViewHolder> {
 
     private List<Exercise> allCategorysExercices;
+    private List<Integer> allDoneExrcises;
     private Context context;
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
@@ -32,6 +33,7 @@ public class ExercicesRecViewAdater extends RecyclerView.Adapter<ExercicesRecVie
         public TextView exerciseLevel;
         public Button exerciseProcced;
         public RelativeLayout exerciseLevelLayout;
+        public ImageView exerciseDone;
 
         public MyViewHolder(View itemView) {
 
@@ -42,12 +44,14 @@ public class ExercicesRecViewAdater extends RecyclerView.Adapter<ExercicesRecVie
             exerciseLevel = itemView.findViewById(R.id.exerItemLevelText);
             exerciseProcced = itemView.findViewById(R.id.exerItemProccedBtn);
             exerciseLevelLayout = itemView.findViewById(R.id.exerItemLevelLay);
+            exerciseDone = itemView.findViewById(R.id.exerItemDoneImg);
 
         }
     }
 
-    public ExercicesRecViewAdater(List<Exercise> allCategorysExercices, Context context) {
+    public ExercicesRecViewAdater(List<Exercise> allCategorysExercices, List<Integer> allDoneExercises, Context context) {
         this.allCategorysExercices = allCategorysExercices;
+        this.allDoneExrcises = allDoneExercises;
         this.context = context;
     }
 
@@ -79,6 +83,12 @@ public class ExercicesRecViewAdater extends RecyclerView.Adapter<ExercicesRecVie
             holder.exerciseLevelLayout.setBackgroundColor(Color.parseColor("#ff1601"));
         }
 
+        if(allDoneExrcises.contains(exercise.getId())){
+            holder.exerciseDone.setImageResource(R.drawable.exerc_done);
+        }else{
+            holder.exerciseDone.setImageResource(R.drawable.exerc_undone);
+        }
+
         holder.exerciseProcced.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,6 +101,8 @@ public class ExercicesRecViewAdater extends RecyclerView.Adapter<ExercicesRecVie
 
             }
         });
+
+
 
     }
 
