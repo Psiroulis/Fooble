@@ -53,15 +53,21 @@ public class AllCategoriesActivity extends Activity {
 
         context = this;
 
-        allCategories = new ArrayList<>();
-
         jParser = new HttpConnection();
-
-        new GetAllCategories().execute();
 
         SharedPreferences prefs = context.getSharedPreferences("prefs",Context.MODE_PRIVATE);
 
         selectedAge = prefs.getInt("age",0);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        allCategories = new ArrayList<>();
+
+        new GetAllCategories().execute();
+
     }
 
     private void findTheViews(){

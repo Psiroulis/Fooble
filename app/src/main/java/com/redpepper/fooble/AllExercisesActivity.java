@@ -70,13 +70,19 @@ public class AllExercisesActivity extends Activity {
 
         selectedAge = prefs.getInt("age",0);
 
+        jParser = new HttpConnection();
+
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
         allCategorysExercises = new ArrayList<>();
 
         allDoneExercises = new ArrayList<>();
 
-        jParser = new HttpConnection();
-
-        //new GetCategorysExercises().execute();
         new GetExercisesFromDatabase().execute();
     }
 
