@@ -9,7 +9,7 @@
     <ImageView
         android:layout_width="220dip"
         android:layout_height="220dip"
-        android:src="@drawable/newlogov2"
+        android:src="@drawable/logo"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"/>
     <ImageView

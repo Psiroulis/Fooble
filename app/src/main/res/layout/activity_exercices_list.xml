@@ -61,7 +61,7 @@
                 android:id="@+id/lgoim"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/newlogov2"
+                android:src="@drawable/logo"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"/>
             <TextView

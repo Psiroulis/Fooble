@@ -14,20 +14,20 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.redpepper.fooble.myclasses.Exercise;
-import com.redpepper.fooble.SingleExerciseActivity;
 import com.redpepper.fooble.R;
+import com.redpepper.fooble.SingleExerciseActivity;
+import com.redpepper.fooble.myclasses.Exercise;
 
 import java.util.List;
 
 public class ExercicesRecViewAdater extends RecyclerView.Adapter<ExercicesRecViewAdater.MyViewHolder> {
 
     private List<Exercise> allCategorysExercices;
-    private List<Integer> allDoneExrcises;
     private Context context;
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
+        public TextView exerciseId;
         public ImageView exerciseThumb;
         public TextView exerciseName;
         public TextView exerciseLevel;
@@ -39,6 +39,7 @@ public class ExercicesRecViewAdater extends RecyclerView.Adapter<ExercicesRecVie
 
             super(itemView);
 
+            exerciseId = itemView.findViewById(R.id.exerItemIdTxt);
             exerciseThumb = itemView.findViewById(R.id.exerItemThumbImg);
             exerciseName = itemView.findViewById(R.id.exerItemNameText);
             exerciseLevel = itemView.findViewById(R.id.exerItemLevelText);
@@ -46,12 +47,24 @@ public class ExercicesRecViewAdater extends RecyclerView.Adapter<ExercicesRecVie
             exerciseLevelLayout = itemView.findViewById(R.id.exerItemLevelLay);
             exerciseDone = itemView.findViewById(R.id.exerItemDoneImg);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(context, SingleExerciseActivity.class);
+
+                    intent.putExtra("exerciseId",Integer.valueOf(exerciseId.getText().toString()));
+
+                    context.startActivity(intent);
+
+                }
+            });
+
         }
     }
 
-    public ExercicesRecViewAdater(List<Exercise> allCategorysExercices, List<Integer> allDoneExercises, Context context) {
+    public ExercicesRecViewAdater(List<Exercise> allCategorysExercices, Context context) {
         this.allCategorysExercices = allCategorysExercices;
-        this.allDoneExrcises = allDoneExercises;
         this.context = context;
     }
 
@@ -70,20 +83,21 @@ public class ExercicesRecViewAdater extends RecyclerView.Adapter<ExercicesRecVie
 
         final Exercise exercise = allCategorysExercices.get(position);
 
+        holder.exerciseId.setText(String.valueOf(exercise.getId()));
         holder.exerciseThumb.setImageResource(R.drawable.cat_im);
         holder.exerciseName.setText(exercise.getName());
         holder.exerciseLevel.setText(exercise.getLevelText());
         String level = exercise.getLevelText();
 
-        if(level.equalsIgnoreCase("Easy")){
+        if(level.equalsIgnoreCase("Beginner")){
             holder.exerciseLevelLayout.setBackgroundColor(Color.parseColor("#01ff1f"));
-        }else if(level.equalsIgnoreCase("Medium")){
+        }else if(level.equalsIgnoreCase("Expert")){
             holder.exerciseLevelLayout.setBackgroundColor(Color.parseColor("#ff5601"));
-        }else if(level.equalsIgnoreCase("Hard")){
+        }else if(level.equalsIgnoreCase("Elite")){
             holder.exerciseLevelLayout.setBackgroundColor(Color.parseColor("#ff1601"));
         }
 
-        if(allDoneExrcises.contains(exercise.getId())){
+        if( exercise.getIsDone() ){
             holder.exerciseDone.setImageResource(R.drawable.exerc_done);
         }else{
             holder.exerciseDone.setImageResource(R.drawable.exerc_undone);
@@ -93,11 +107,11 @@ public class ExercicesRecViewAdater extends RecyclerView.Adapter<ExercicesRecVie
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(context, SingleExerciseActivity.class);
-
-                intent.putExtra("exerciseId",exercise.getId());
-
-                context.startActivity(intent);
+//                Intent intent = new Intent(context, SingleExerciseActivity.class);
+//
+//                intent.putExtra("exerciseId",exercise.getId());
+//
+//                context.startActivity(intent);
 
             }
         });

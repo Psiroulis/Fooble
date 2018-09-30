@@ -14,6 +14,9 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.redpepper.fooble.RecycleViewsAdapters.ExercicesRecViewAdater;
+import com.redpepper.fooble.database.AppDatabase;
+import com.redpepper.fooble.database.ExerciseDao;
+import com.redpepper.fooble.database.ExerciseEntity;
 import com.redpepper.fooble.myclasses.Exercise;
 import com.redpepper.fooble.myclasses.HttpConnection;
 
@@ -71,15 +74,10 @@ public class AllExercisesActivity extends Activity {
 
         allDoneExercises = new ArrayList<>();
 
-        allDoneExercises.add(1);
-        allDoneExercises.add(3);
-        allDoneExercises.add(4);
-        allDoneExercises.add(5);
-
         jParser = new HttpConnection();
 
-        new GetCategorysExercises().execute();
-
+        //new GetCategorysExercises().execute();
+        new GetExercisesFromDatabase().execute();
     }
 
     private void findTheViews(){
@@ -100,7 +98,7 @@ public class AllExercisesActivity extends Activity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
 
-            mAdapter = new ExercicesRecViewAdater(allCategorysExercises,allDoneExercises,context);
+            mAdapter = new ExercicesRecViewAdater(allCategorysExercises,context);
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
             exercisesList.setLayoutManager(mLayoutManager);
             exercisesList.setItemAnimator(new DefaultItemAnimator());
@@ -120,7 +118,7 @@ public class AllExercisesActivity extends Activity {
 
             try{
 
-                url = new URL("http://165.227.168.146/api/get-categories");
+                url = new URL("http://165.227.168.146/api/get-exercises-list");
 
             }catch (MalformedURLException ex){
                 ex.printStackTrace();
@@ -129,12 +127,13 @@ public class AllExercisesActivity extends Activity {
             HashMap<String,String> data = new HashMap<>();
             data.put("lang",String.valueOf(Locale.getDefault().getLanguage()));
             data.put("age",String.valueOf(selectedAge));
+            data.put("category_id",String.valueOf(categoryId));
 
             try{
 
                 JSONObject jObj = jParser.makeHttpUrlRequest(url,data,"Post");
 
-                JSONArray exercisesArray = jObj.getJSONArray("categories");
+                JSONArray exercisesArray = jObj.getJSONArray("exercises");
 
                 for (int i = 0; i < exercisesArray.length(); i++){
 
@@ -145,8 +144,9 @@ public class AllExercisesActivity extends Activity {
                     Exercise exercise = new Exercise(
                             oneExercise.getInt("id"),
                             oneExercise.getString("name"),
-                            oneExercise.getInt("level"),
-                            IsExerciseDone(allDoneExercises,oneExercise.getInt("id"))
+                            oneExercise.getString("level"),
+                            IsExerciseDone(allDoneExercises, oneExercise.getInt("id"))
+
                     );
 
                     allCategorysExercises.add(exercise);
@@ -157,6 +157,38 @@ public class AllExercisesActivity extends Activity {
             }
 
             return null;
+        }
+    }
+
+    private class GetExercisesFromDatabase extends AsyncTask<String, String, String>{
+        @Override
+        protected String doInBackground(String... strings) {
+
+            AppDatabase db = AppDatabase.getInstance(context);
+
+            ExerciseDao execDao = db.exerDao();
+
+            List<ExerciseEntity> exercisesFromDb = execDao.getAll();
+
+            if(exercisesFromDb.size() > 0){
+
+                for(int i = 0; i < exercisesFromDb.size(); i++){
+
+                    allDoneExercises.add(exercisesFromDb.get(i).getExerId());
+
+                }
+
+            }
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            new GetCategorysExercises().execute();
         }
     }
 

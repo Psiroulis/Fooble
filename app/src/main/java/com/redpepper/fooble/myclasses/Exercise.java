@@ -4,39 +4,39 @@ public class Exercise {
 
     private int id;
     private String name;
-    private int level;
+    private String level;
     private String levelText;
     private String description;
     private String bibliography;
     private String videoPath;
     private boolean isDone;
 
-    public Exercise(int id, String name, int level, String description, String bibliography, String videoPath) {
+    public Exercise(int id, String name, String level, String description, String bibliography, String videoPath) {
         this.id = id;
         this.name = name;
         this.level = level;
         this.description = description;
         this.bibliography = bibliography;
         this.videoPath = videoPath;
-        if(level == 1){
-            levelText = "Easy";
-        }else if(level == 2){
-            levelText = "Medium";
-        }else if(level == 3){
-            levelText = "Hard";
+        if(level.equalsIgnoreCase("beg")){
+            levelText = "Beginner";
+        }else if(level.equalsIgnoreCase("exp")){
+            levelText = "Expert";
+        }else if(level.equalsIgnoreCase("elt")){
+            levelText = "Elite";
         }
     }
 
-    public Exercise(int id, String name, int level, boolean isDone) {
+    public Exercise(int id, String name, String level, boolean isDone) {
         this.id = id;
         this.name = name;
         this.level = level;
-        if(level == 1){
-            levelText = "Easy";
-        }else if(level == 2){
-            levelText = "Medium";
-        }else if(level == 3){
-            levelText = "Hard";
+        if(level.equalsIgnoreCase("beg")){
+            levelText = "Beginner";
+        }else if(level.equalsIgnoreCase("exp")){
+            levelText = "Expert";
+        }else if(level.equalsIgnoreCase("elt")){
+            levelText = "Elite";
         }
         this.isDone = isDone;
     }
@@ -49,7 +49,7 @@ public class Exercise {
         return name;
     }
 
-    public int getLevel() {
+    public String getLevel() {
         return level;
     }
 
@@ -73,7 +73,7 @@ public class Exercise {
         this.name = name;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 
@@ -97,7 +97,7 @@ public class Exercise {
         this.levelText = levelText;
     }
 
-    public boolean isDone() { return isDone; }
+    public boolean getIsDone() { return isDone; }
 
     public void setDone(boolean done) { isDone = done; }
 }

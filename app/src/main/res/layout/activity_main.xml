@@ -24,7 +24,7 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="20dp"
-        android:src="@drawable/newlogov2"/>
+        android:src="@drawable/logo"/>
 
     <Button
         android:id="@+id/selectagebutton"

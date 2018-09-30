@@ -16,7 +16,7 @@
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="250dip"
+        android:layout_height="180dip"
         card_view:cardCornerRadius="4dp"
         card_view:cardBackgroundColor="#fff"
         card_view:contentPadding="5dp">
@@ -53,14 +53,39 @@
                     android:layout_alignParentLeft="true"
                     android:layout_margin="10dp"
                     android:textSize="18sp"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="10dp">
+                    <ImageView
+                        android:id="@+id/litListImageview"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/exerc_icon" />
+                    <TextView
+                        android:id="@+id/catItemCounter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/litListImageview"
+                        android:text="30"
+                        android:textColor="#fff"
+                        android:textSize="20sp" />
+                </RelativeLayout>
+
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/liDescriptionTextLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/litimagelaout"
-                android:layout_above="@id/litActionButtLayout">
+                android:layout_below="@id/litimagelaout">
 
                 <TextView
                     android:id="@+id/catListItemShortDescr"
@@ -78,40 +103,7 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/litActionButtLayout"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_alignParentBottom="true"
-                android:background="#eee">
 
-                <Button
-                    android:id="@+id/catListItemButton"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/category_next"
-                    android:layout_centerVertical="true"
-                    />
-
-                <ImageView
-                    android:id="@+id/litListImageview"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/exerc_icon"/>
-
-                <TextView
-                    android:id="@+id/catItemCounter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/litListImageview"
-                    android:text="30"
-                    android:textColor="#222"
-                    android:textSize="20sp" />
-            </RelativeLayout>
 
         </RelativeLayout>
 
@@ -119,3 +111,37 @@
     </android.support.v7.widget.CardView>
 
 </LinearLayout>
+
+
+<!--<RelativeLayout-->
+<!--android:id="@+id/litActionButtLayout"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="50dp"-->
+<!--android:layout_alignParentBottom="true"-->
+<!--android:background="#eee">-->
+
+<!--<Button-->
+    <!--android:id="@+id/catListItemButton"-->
+    <!--android:layout_width="30dp"-->
+    <!--android:layout_height="30dp"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:background="@drawable/category_next"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:visibility="gone"-->
+    <!--/>-->
+
+<!--<ImageButton-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="40dp"-->
+    <!--android:background="@drawable/redbuttonselector"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:src="@drawable/back_arrow"-->
+
+    <!--android:textColor="#fff"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_marginRight="10dp"/>-->
+
+
+
+
+<!--</RelativeLayout>-->
