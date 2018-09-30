@@ -1,4 +1,4 @@
-package com.redpepper.fooble;
+package com.redpepper.fooble.myclasses;
 
 import android.util.Log;
 

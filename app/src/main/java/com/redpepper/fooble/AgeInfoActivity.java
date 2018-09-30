@@ -1,7 +1,9 @@
 package com.redpepper.fooble;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +12,7 @@ import android.widget.TextView;
 
 
 
-public class AgeInformation extends Activity {
+public class AgeInfoActivity extends Activity {
     private TextView title;
 
     private TextView infoText;
@@ -19,6 +21,7 @@ public class AgeInformation extends Activity {
 
     private int selectedAge;
 
+    private Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,9 +29,11 @@ public class AgeInformation extends Activity {
 
         FindTheViews();
 
-        Intent intent = getIntent();
+        context = this;
 
-        selectedAge = intent.getIntExtra("selectedAge",0);
+        SharedPreferences prefs = context.getSharedPreferences("prefs", Context.MODE_PRIVATE);
+
+        selectedAge = prefs.getInt("age",0);
 
         if(selectedAge>= 8 && selectedAge <= 10){
 
@@ -68,7 +73,7 @@ public class AgeInformation extends Activity {
         goNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AgeInformation.this,AllCategoriesList.class);
+                Intent intent = new Intent(AgeInfoActivity.this,AllCategoriesActivity.class);
 
                 intent.putExtra("selectedAge",selectedAge);
 

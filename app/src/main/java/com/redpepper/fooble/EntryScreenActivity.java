@@ -8,11 +8,14 @@ import android.os.Handler;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-public class EntryScreen extends Activity {
+import com.redpepper.fooble.myclasses.Connectivity;
+import com.redpepper.fooble.myclasses.LoadingAnimation;
+
+public class EntryScreenActivity extends Activity {
 
     private ImageView loaderImageView;
 
-    private LoadingBar loadbar;
+    private LoadingAnimation loadbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +28,7 @@ public class EntryScreen extends Activity {
 
         final Context context = this;
 
-        loadbar = new LoadingBar(loaderImageView,1000,context);
+        loadbar = new LoadingAnimation(loaderImageView,1000,context);
 
         loadbar.playTheLoader();
 
@@ -44,13 +47,13 @@ public class EntryScreen extends Activity {
 
         if(connection.isConnected(context)){
 
-            Intent intent = new Intent(EntryScreen.this,MainActivity.class);
+            Intent intent = new Intent(EntryScreenActivity.this,MainActivity.class);
 
             startActivity(intent);
 
             loadbar.stopTheLoader();
 
-            EntryScreen.this.finish();
+            EntryScreenActivity.this.finish();
 
         }else{
 

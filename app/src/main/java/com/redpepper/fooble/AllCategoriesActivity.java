@@ -1,8 +1,8 @@
 package com.redpepper.fooble;
 
 import android.app.Activity;
-
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,11 +10,12 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.redpepper.fooble.RecycleViewsAdapters.CategoryRecViewAdapter;
+import com.redpepper.fooble.myclasses.Category;
+import com.redpepper.fooble.myclasses.HttpConnection;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,7 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-public class AllCategoriesList extends Activity {
+public class AllCategoriesActivity extends Activity {
 
     private int selectedAge;
 
@@ -50,8 +51,6 @@ public class AllCategoriesList extends Activity {
 
         findTheViews();
 
-        selectedAge = getIntent().getIntExtra("selectedAge",0);
-
         context = this;
 
         allCategories = new ArrayList<>();
@@ -59,6 +58,10 @@ public class AllCategoriesList extends Activity {
         jParser = new HttpConnection();
 
         new GetAllCategories().execute();
+
+        SharedPreferences prefs = context.getSharedPreferences("prefs",Context.MODE_PRIVATE);
+
+        selectedAge = prefs.getInt("age",0);
     }
 
     private void findTheViews(){

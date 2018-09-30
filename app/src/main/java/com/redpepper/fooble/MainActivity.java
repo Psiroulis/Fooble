@@ -6,17 +6,15 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.BatteryManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.VideoView;
+
 import java.util.Calendar;
 
 public class MainActivity extends Activity {
@@ -94,9 +92,7 @@ public class MainActivity extends Activity {
 
             pe.commit();
 
-            Intent intent = new Intent(context,AgeInformation.class);
-
-            intent.putExtra("selectedAge",getAge(year,month,day));
+            Intent intent = new Intent(context,AgeInfoActivity.class);
 
             startActivity(intent);
 
@@ -126,36 +122,3 @@ public class MainActivity extends Activity {
 }
 
 
-/*private class GetAllData extends AsyncTask<String,String,String>{
-        @Override
-        protected String doInBackground(String... strings) {
-
-            AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"AppDatabase").build();
-
-            CategoriesDao catdao = db.catDao();
-
-            ExerscisesDao exdao = db.excDao();
-
-            List<CategoriesEntity> allCategories = catdao.getAllCategories();
-            List<ExercisesEntity> allExercises = exdao.getAllExercises();
-
-            db.close();
-
-            for (int i = 0; i< allCategories.size(); i++){
-
-                CategoriesEntity entity = allCategories.get(i);
-                Log.d("Blepo","Categorie-> id="+entity.getId()+" name="+entity.getName()+"imlink="+entity.getImage_link());
-            }
-
-            for (int i = 0; i< allExercises.size(); i++){
-
-                ExercisesEntity entity = allExercises.get(i);
-                Log.d("Blepo","Exercise-> id="+entity.getId()+" name="+entity.getName()+"agemin= "+entity.getAge_min());
-            }
-
-
-
-
-            return null;
-        }
-    }*/

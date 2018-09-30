@@ -1,4 +1,4 @@
-package com.redpepper.fooble;
+package com.redpepper.fooble.myclasses;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

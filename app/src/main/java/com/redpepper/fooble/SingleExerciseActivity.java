@@ -9,7 +9,7 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
-public class ExerciseActivity extends YouTubeBaseActivity {
+public class SingleExerciseActivity extends YouTubeBaseActivity {
 
     YouTubePlayerView yView;
 

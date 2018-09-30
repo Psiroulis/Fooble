@@ -10,8 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.redpepper.fooble.Category;
-import com.redpepper.fooble.ExercicesList;
+import com.redpepper.fooble.myclasses.Category;
+import com.redpepper.fooble.AllExercisesActivity;
 import com.redpepper.fooble.R;
 import com.squareup.picasso.Picasso;
 
@@ -77,7 +77,7 @@ public class CategoryRecViewAdapter extends RecyclerView.Adapter<CategoryRecView
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(context, ExercicesList.class);
+                Intent intent = new Intent(context, AllExercisesActivity.class);
 
                 intent.putExtra("catid",category.getId());
 
@@ -89,6 +89,7 @@ public class CategoryRecViewAdapter extends RecyclerView.Adapter<CategoryRecView
         holder.categoryCounter.setText(String.valueOf(category.getCounter()));
 
         Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(holder.categoryBack);
+
 
     }
 

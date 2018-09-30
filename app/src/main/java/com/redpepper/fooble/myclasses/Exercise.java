@@ -1,4 +1,4 @@
-package com.redpepper.fooble;
+package com.redpepper.fooble.myclasses;
 
 public class Exercise {
 
@@ -9,6 +9,7 @@ public class Exercise {
     private String description;
     private String bibliography;
     private String videoPath;
+    private boolean isDone;
 
     public Exercise(int id, String name, int level, String description, String bibliography, String videoPath) {
         this.id = id;
@@ -26,7 +27,7 @@ public class Exercise {
         }
     }
 
-    public Exercise(int id, String name, int level) {
+    public Exercise(int id, String name, int level, boolean isDone) {
         this.id = id;
         this.name = name;
         this.level = level;
@@ -37,6 +38,7 @@ public class Exercise {
         }else if(level == 3){
             levelText = "Hard";
         }
+        this.isDone = isDone;
     }
 
     public int getId() {
@@ -94,4 +96,8 @@ public class Exercise {
     public void setLevelText(String levelText) {
         this.levelText = levelText;
     }
+
+    public boolean isDone() { return isDone; }
+
+    public void setDone(boolean done) { isDone = done; }
 }

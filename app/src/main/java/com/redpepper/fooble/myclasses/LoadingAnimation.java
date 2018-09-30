@@ -1,15 +1,17 @@
-package com.redpepper.fooble;
+package com.redpepper.fooble.myclasses;
 
 import android.app.Activity;
 import android.content.Context;
 import android.widget.ImageView;
 
 
+import com.redpepper.fooble.R;
+
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class LoadingBar {
+public class LoadingAnimation {
     private ImageView image;
     private int timeLap;
     private ArrayList<Integer> imagesArray;
@@ -17,7 +19,7 @@ public class LoadingBar {
     private Timer timer;
     private Context context;
 
-    public LoadingBar(ImageView image, int timeLap, Context context) {
+    public LoadingAnimation(ImageView image, int timeLap, Context context) {
         this.image = image;
         this.timeLap = timeLap;
         this.imagesArray = SetArraysDrawables();

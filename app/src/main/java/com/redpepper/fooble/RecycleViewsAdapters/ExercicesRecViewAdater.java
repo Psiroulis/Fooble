@@ -14,8 +14,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.redpepper.fooble.Exercise;
-import com.redpepper.fooble.ExerciseActivity;
+import com.redpepper.fooble.myclasses.Exercise;
+import com.redpepper.fooble.SingleExerciseActivity;
 import com.redpepper.fooble.R;
 
 import java.util.List;
@@ -93,7 +93,7 @@ public class ExercicesRecViewAdater extends RecyclerView.Adapter<ExercicesRecVie
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(context, ExerciseActivity.class);
+                Intent intent = new Intent(context, SingleExerciseActivity.class);
 
                 intent.putExtra("exerciseId",exercise.getId());
 
