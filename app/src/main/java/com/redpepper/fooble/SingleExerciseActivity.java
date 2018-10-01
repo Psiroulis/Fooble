@@ -58,6 +58,7 @@ public class SingleExerciseActivity extends YouTubeBaseActivity {
                 youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.MINIMAL);
                 youTubePlayer.setFullscreenControlFlags(YouTubePlayer.FULLSCREEN_FLAG_ALWAYS_FULLSCREEN_IN_LANDSCAPE|YouTubePlayer.FULLSCREEN_FLAG_CONTROL_ORIENTATION);
                 youTubePlayer.setShowFullscreenButton(true);
+
             }
 
             @Override
@@ -98,14 +99,14 @@ public class SingleExerciseActivity extends YouTubeBaseActivity {
 
                         new InsertIdToDb().execute();
 
-                        Toast.makeText(context,"INSERT",Toast.LENGTH_SHORT).show();
+
 
                     }else{
                         //delete id
 
                         new DeleteIdFromDb().execute();
 
-                        Toast.makeText(context,"DELETE",Toast.LENGTH_SHORT).show();
+
 
                     }
                 }
@@ -153,6 +154,14 @@ public class SingleExerciseActivity extends YouTubeBaseActivity {
 
             return null;
         }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            Toast.makeText(context,"INSERT",Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     private class DeleteIdFromDb extends AsyncTask<String,String,String>{
@@ -167,9 +176,21 @@ public class SingleExerciseActivity extends YouTubeBaseActivity {
 
             return null;
         }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            Toast.makeText(context,"DELETE",Toast.LENGTH_SHORT).show();
+        }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
+
+    }
 }
 
 

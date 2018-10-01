@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Fooble</string>
+    <string name="app_name" translatable="false">F.U.T</string>
     <string name="chooseage">Give Birthday</string>
     <string-array name="age_group">
         <item>Age</item>
