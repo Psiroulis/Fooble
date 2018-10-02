@@ -84,7 +84,7 @@ public class ExercicesRecViewAdater extends RecyclerView.Adapter<ExercicesRecVie
         final Exercise exercise = allCategorysExercices.get(position);
 
         holder.exerciseId.setText(String.valueOf(exercise.getId()));
-        holder.exerciseThumb.setImageResource(R.drawable.cat_im);
+        //holder.exerciseThumb.setImageResource(R.drawable.cat_im);
         holder.exerciseName.setText(exercise.getName());
         holder.exerciseLevel.setText(exercise.getLevelText());
         String level = exercise.getLevelText();

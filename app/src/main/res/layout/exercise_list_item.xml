@@ -30,7 +30,7 @@
                 android:id="@+id/exerItemThumbImg"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/cat_im"
+                android:src="@drawable/bgappbasic"
                 android:scaleType="centerCrop"
                 android:layout_centerVertical="true"
                 android:layout_marginBottom="3dp"/>
