@@ -30,10 +30,9 @@ public class ExercicesRecViewAdater extends RecyclerView.Adapter<ExercicesRecVie
         public TextView exerciseId;
         public ImageView exerciseThumb;
         public TextView exerciseName;
-        public TextView exerciseLevel;
-        public Button exerciseProcced;
         public RelativeLayout exerciseLevelLayout;
-        public ImageView exerciseDone;
+        public TextView exerciseLevel;
+        public RelativeLayout doneLayout;
 
         public MyViewHolder(View itemView) {
 
@@ -43,9 +42,10 @@ public class ExercicesRecViewAdater extends RecyclerView.Adapter<ExercicesRecVie
             exerciseThumb = itemView.findViewById(R.id.exerItemThumbImg);
             exerciseName = itemView.findViewById(R.id.exerItemNameText);
             exerciseLevel = itemView.findViewById(R.id.exerItemLevelText);
-            exerciseProcced = itemView.findViewById(R.id.exerItemProccedBtn);
             exerciseLevelLayout = itemView.findViewById(R.id.exerItemLevelLay);
-            exerciseDone = itemView.findViewById(R.id.exerItemDoneImg);
+            doneLayout = itemView.findViewById(R.id.exerItemCompletedLayout);
+
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -90,34 +90,17 @@ public class ExercicesRecViewAdater extends RecyclerView.Adapter<ExercicesRecVie
         String level = exercise.getLevelText();
 
         if(level.equalsIgnoreCase("Beginner")){
-            holder.exerciseLevelLayout.setBackgroundColor(Color.parseColor("#01ff1f"));
+            holder.exerciseLevelLayout.setBackgroundResource(R.drawable.bgbeginner);
         }else if(level.equalsIgnoreCase("Expert")){
-            holder.exerciseLevelLayout.setBackgroundColor(Color.parseColor("#ff5601"));
+            holder.exerciseLevelLayout.setBackgroundResource(R.drawable.bgexpert);
         }else if(level.equalsIgnoreCase("Elite")){
-            holder.exerciseLevelLayout.setBackgroundColor(Color.parseColor("#ff1601"));
+            holder.exerciseLevelLayout.setBackgroundResource(R.drawable.bgelite);
         }
+
 
         if( exercise.getIsDone() ){
-            holder.exerciseDone.setImageResource(R.drawable.exerc_done);
-        }else{
-            holder.exerciseDone.setImageResource(R.drawable.exerc_undone);
+            holder.doneLayout.setVisibility(View.VISIBLE);
         }
-
-        holder.exerciseProcced.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-//                Intent intent = new Intent(context, SingleExerciseActivity.class);
-//
-//                intent.putExtra("exerciseId",exercise.getId());
-//
-//                context.startActivity(intent);
-
-            }
-        });
-
-
-
     }
 
     @Override

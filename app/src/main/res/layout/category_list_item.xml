@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="180dip"
         card_view:cardCornerRadius="4dp"
-        card_view:cardBackgroundColor="#fff"
+        card_view:cardBackgroundColor="#eee"
         card_view:contentPadding="5dp">
 
         <RelativeLayout

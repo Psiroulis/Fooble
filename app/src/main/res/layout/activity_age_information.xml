@@ -5,57 +5,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AgeInfoActivity"
-    android:background="#0A1128">
+    android:background="@drawable/bgappbasic">
 
     <RelativeLayout
         android:id="@+id/aiTitleLayout"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="#3560dd"
         android:layout_alignParentTop="true">
-        <LinearLayout
-            android:layout_width="match_parent"
+
+        <TextView
+            android:id="@+id/titleAgeInfo"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_centerVertical="true">
-            <Button
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/back_arrow"
-                android:layout_marginLeft="10dp"/>
-            <TextView
-                android:id="@+id/titleAgeInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="0dp"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                android:text="ΗΛΙΚΙΑΚΟ GROUP 8-10 ΕΤΩΝ"
-                android:textSize="20sp"
-                android:textColor="#fff"
-                android:layout_marginLeft="10dp"/>
-        </LinearLayout>
+            android:padding="0dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:text="ΗΛΙΚΙΑΚΟ GROUP 8-10 ΕΤΩΝ"
+            android:textSize="20sp"
+            android:textColor="#fff"
+            android:layout_marginLeft="10dp"/>
+
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="20dp"
         android:layout_below="@id/aiTitleLayout"
-        android:layout_above="@id/infoNextButton">
+        android:layout_above="@id/infoNextButton"
+        android:background="@drawable/bgcompleted">
 
-        <TextView
-            android:id="@+id/mainTextInfo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/protocolLogo"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/logo"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:textAlignment="inherit"
-            android:textColor="#fff"
-            android:layout_margin="10dp"
-            android:textSize="19sp"
-            android:justificationMode="inter_word"
-            android:text="@string/info_1112"/>
+            android:layout_marginTop="10dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/protocolLogo">
+
+            <TextView
+                android:id="@+id/mainTextInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textAlignment="center"
+                android:textColor="#222"
+                android:textSize="17sp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:justificationMode="inter_word"
+                android:text="@string/info_1112"/>
+        </RelativeLayout>
+
 
     </RelativeLayout>
 
