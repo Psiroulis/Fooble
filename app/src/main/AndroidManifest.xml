@@ -40,8 +40,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".SingleExerciseActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboard|keyboardHidden|screenSize|screenLayout|uiMode"/>
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize|screenLayout|uiMode"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
