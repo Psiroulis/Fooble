@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "5984576294",
+    "firebase_url": "https://foobleandroid.firebaseio.com",
+    "project_id": "foobleandroid",
+    "storage_bucket": "foobleandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5984576294:android:4148141abb299299",
+        "android_client_info": {
+          "package_name": "com.redpepper.fooble"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "5984576294-830s46prt01utrc7jup73jn46bm5jelv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.redpepper.fooble",
+            "certificate_hash": "6846b9ec6fe1baf0c37c92eeedd0ab75d8878c5e"
+          }
+        },
+        {
+          "client_id": "5984576294-ubq1i7abi8sptuk2hc8qgket995kq421.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCitEl52NzMsPrpz-CRE1sau_DDCAHXUTw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "5984576294-ubq1i7abi8sptuk2hc8qgket995kq421.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
