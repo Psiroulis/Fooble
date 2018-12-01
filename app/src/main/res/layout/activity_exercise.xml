@@ -27,94 +27,33 @@
         android:layout_height="match_parent"
         android:id="@+id/view"
         android:layout_below="@id/titleLayout"
-        android:layout_above="@id/splitter"/>
+        android:layout_above="@id/singleExercDoneButton"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
 
-    <LinearLayout
-        android:id="@+id/splitter"
+
+    <ToggleButton
+        android:id="@+id/singleExercDoneButton"
         android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_centerVertical="true"
-        android:orientation="vertical"
-        android:visibility="invisible"/>
-
-    <RelativeLayout
-        android:id="@+id/descriptionLayout"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_below="@id/splitter"
-        android:layout_marginTop="5dp">
-        <TextView
-            android:id="@+id/descrTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ΟΔΗΓΙΕΣ"
-            android:textSize="18sp"
-            android:textAlignment="center"
-            android:textColor="#fff"
-            android:layout_centerVertical="true"/>
-    </RelativeLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/descriptionLayout"
-        android:layout_above="@id/exercButtonsLay"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp">
-
-        <TextView
-            android:id="@+id/descrText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum lorem ut mauris pretium, eu posuere ante vestibulum. Praesent vehicula, nunc feugiat ullamcorper eleifend, ipsum libero sollicitudin purus, in lobortis dolor magna sed metus. Sed lorem metus, fermentum a fermentum ac, congue tincidunt eros.in lobortis dolor magna sed metus. Sed lorem metus, fermentum a fermentum ac, congue tincidunt eros.  in lobortis dolor magna sed metus. Sed lorem metus, fermentum a fermentum ac, congue tincidunt eros.  "
-            android:textSize="16sp"
-            android:gravity="fill"
-            android:textAlignment="gravity"
-            android:textColor="#222"
-            android:justificationMode="inter_word"
-            android:background="@drawable/bgcompleted"
-            android:padding="5dp"
-            />
-
-    </ScrollView>
-
-    <LinearLayout
-        android:id="@+id/exercButtonsLay"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
+        android:layout_height="50dip"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginBottom="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:paddingTop="5dp">
+        android:layout_marginTop="5dp"
+        android:layout_alignParentBottom="true"
+        android:textOn="Undone"
+        android:textOff="Done"
+        android:checked="false"
+        android:background="@drawable/done_button_selector"
+        android:textColor="#fff"
+        android:textSize="16sp"/>
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Βιβλιογαρφία"
-            android:background="@drawable/bluebuttonselector"
-            android:textColor="#fff"
-            android:layout_marginRight="2dp"
-            android:textSize="16sp"/>
-        <ToggleButton
-            android:id="@+id/singleExercDoneButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginLeft="2dp"
-            android:textOn="Undone"
-            android:textOff="Done"
-            android:checked="false"
-            android:background="@drawable/done_button_selector"
-            android:textColor="#fff"
-            android:textSize="16sp"/>
 
-    </LinearLayout>
+
 
 
 
 
 
 </RelativeLayout>
+
