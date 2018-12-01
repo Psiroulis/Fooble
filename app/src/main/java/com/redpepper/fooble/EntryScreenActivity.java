@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.MobileAds;
 import com.redpepper.fooble.myclasses.Connectivity;
 import com.redpepper.fooble.myclasses.LoadingAnimation;
 
@@ -31,6 +32,8 @@ public class EntryScreenActivity extends Activity {
         loadbar = new LoadingAnimation(loaderImageView,1000,context);
 
         loadbar.playTheLoader();
+
+        MobileAds.initialize(this, context.getString(R.string.YOUR_ADMOB_APP_ID));
 
         Handler handler = new Handler();
 

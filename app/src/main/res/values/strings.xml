@@ -28,4 +28,10 @@
        No Description in English
     </string>
     <string name="go_next">Next</string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-1259587909640466/7682587395</string>
+    <string name="YOUR_ADMOB_APP_ID">ca-app-pub-1259587909640466~1145099201</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

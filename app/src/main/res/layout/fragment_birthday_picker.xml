@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".myfragments.BirthdayPickerFragment"
+    android:orientation="vertical"
+    android:background="#222">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <NumberPicker
+                android:id="@+id/mainDayNumberPicker"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="#02548e">
+            </NumberPicker>
+            <NumberPicker
+                android:id="@+id/mainMonthNumberPicker"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="#02548e">
+            </NumberPicker>
+            <NumberPicker
+                android:id="@+id/mainYearNumberPicker"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="#02548e">
+            </NumberPicker>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/fragProccedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/redbuttonselector"
+            android:textColor="#fff"
+            android:text="OK"
+            android:layout_margin="5dp"/>
+</LinearLayout>
+
