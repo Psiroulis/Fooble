@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -47,7 +48,8 @@ public class MainActivity extends FragmentActivity {
         context = this;
 
         mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice("7BCF8D80D2D2720C44AED185E72590D3").build();
+        //AdRequest adRequest = new AdRequest.Builder().addTestDevice("7BCF8D80D2D2720C44AED185E72590D3").build();
+        AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
         mAdView.setAdListener(new AdListener(){
@@ -57,6 +59,15 @@ public class MainActivity extends FragmentActivity {
 
                 loadingLayout.setVisibility(View.GONE);
             }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+
+                loadingLayout.setVisibility(View.GONE);
+                Log.e("blepo","TO problem" + i);
+            }
+
         });
 
     }
