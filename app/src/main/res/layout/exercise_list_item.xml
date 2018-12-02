@@ -68,8 +68,8 @@
 
                 <ImageView
                     android:id="@+id/levelImage"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@drawable/level"/>
 
                 <TextView
@@ -99,8 +99,8 @@
 
                 <ImageView
                     android:id="@+id/exerItemDoneImg"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@drawable/exerc_done"/>
                 <TextView
                     android:layout_width="wrap_content"
