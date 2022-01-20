@@ -33,7 +33,7 @@ public class AgeInfoActivity extends Activity {
 
         SharedPreferences prefs = context.getSharedPreferences("prefs", Context.MODE_PRIVATE);
 
-        selectedAge = prefs.getInt("age",0);
+        selectedAge = prefs.getInt("age",13);
 
         if(selectedAge>= 8 && selectedAge <= 10){
 
@@ -75,7 +75,7 @@ public class AgeInfoActivity extends Activity {
             public void onClick(View view) {
                 Intent intent = new Intent(AgeInfoActivity.this,AllCategoriesActivity.class);
 
-                intent.putExtra("selectedAge",selectedAge);
+                intent.putExtra("selectedAge",13);
 
                 startActivity(intent);
             }

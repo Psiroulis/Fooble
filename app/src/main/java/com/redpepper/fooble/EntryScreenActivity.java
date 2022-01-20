@@ -8,7 +8,11 @@ import android.os.Handler;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.redpepper.fooble.myclasses.Connectivity;
 import com.redpepper.fooble.myclasses.LoadingAnimation;
 
@@ -33,7 +37,12 @@ public class EntryScreenActivity extends Activity {
 
         loadbar.playTheLoader();
 
-        MobileAds.initialize(this, context.getString(R.string.YOUR_ADMOB_APP_ID));
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
+
+            }
+        });
 
         Handler handler = new Handler();
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.redpepper.fooble">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -42,6 +43,10 @@
             android:name=".SingleExerciseActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize|screenLayout|uiMode"
             android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-1259587909640466~1145099201"/>
     </application>
 
 </manifest>
